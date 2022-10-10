@@ -43,7 +43,7 @@ public class GPSPoint {
 		
 	}
 
-	public double getLongitude() {
+	public double getLongitude()  {
 		
 		return longitude;
 		
