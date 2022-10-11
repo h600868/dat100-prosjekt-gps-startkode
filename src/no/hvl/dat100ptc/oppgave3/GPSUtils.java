@@ -94,21 +94,32 @@ public class GPSUtils {
 		double distanse = distance(gpspoint1, gpspoint2);
 		
 		double ms = distanse / secs; //meter pr sek
-		double kmt = ms * 3.6;
+		double kmt = ms * 3.6; //km i timen
 		
 		return kmt;
 	}
 
 	public static String formatTime(int secs) {
 
-		String timestr;
+		String timestr = "";
 		String TIMESEP = ":";
-
-		// TODO - START
-
-		throw new UnsupportedOperationException(TODO.method());
 		
-		// TODO - SLUTT
+		int tim = secs / 3600;
+		int min = (secs % 3600) / 60;
+		int sek = (secs % 3600) % 60;
+		
+		int[] tid = {tim, min, sek};
+		
+		for (int x : tid) {
+			timestr += String.format("%02d", x);
+			if (x != tid[tid.length - 1]) {
+				timestr += TIMESEP;
+			}
+		}
+		
+		timestr = String.format("%1$10s", timestr);
+		
+		return timestr;
 
 	}
 	private static int TEXTWIDTH = 10;
@@ -117,11 +128,7 @@ public class GPSUtils {
 
 		String str;
 
-		// TODO - START
-
-		throw new UnsupportedOperationException(TODO.method());
-
-		// TODO - SLUTT
+		
 		
 	}
 }
