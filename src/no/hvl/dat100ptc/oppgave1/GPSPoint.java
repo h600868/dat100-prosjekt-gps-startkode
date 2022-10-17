@@ -18,7 +18,7 @@ public class GPSPoint {
 
 	}
 
-	
+	//
 	public int getTime() {
 		
 		return time;

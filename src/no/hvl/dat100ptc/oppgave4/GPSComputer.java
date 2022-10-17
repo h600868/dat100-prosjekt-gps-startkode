@@ -26,11 +26,12 @@ public class GPSComputer {
 		return this.gpspoints;
 	}
 	
-	// beregn total distances (i meter)
+	// beregn total distanse (i meter)
 	public double totalDistance() {
 
 		double distance = 0;
-
+		
+		//bruker løkken for å summerere total distance fra lengden mellom alle punktene i gpspoints
 		for (int i = 1; i < gpspoints.length; i++){	
 				double lengthPoint = GPSUtils.distance(gpspoints[i-1], gpspoints[i]);
 				distance += lengthPoint;
@@ -43,10 +44,13 @@ public class GPSComputer {
 
 		double elevation = 0;
 
+		//bruker løkken for å sumere sammen totale høydemeteren løypen har steget. Sjekker det nye punktet med det forrige punktet. 
+		
 		for (int i = 1; i < gpspoints.length; i++){	
 				double elevationPoint1 = gpspoints[i].getElevation();
 				double elevationPoint2 = gpspoints[i-1].getElevation();
 				
+    	//Sjekker i if-løkken om det nye er høyere, om dette er sant legges differansen til den totale høydemeterern.
 				if ( elevationPoint1 > elevationPoint2) {
 						elevation += elevationPoint1 - elevationPoint2;
 				}
@@ -59,6 +63,7 @@ public class GPSComputer {
 	// beregn total tiden for hele turen (i sekunder)
 	public int totalTime() {
 		
+		//sjekker tid ved siste punktet og trekker ifra det første punktet i målingene, og regner ut total tid. 
 		int time = gpspoints[gpspoints.length - 1].getTime() - gpspoints[0].getTime();
 		
 		return time;
@@ -67,6 +72,7 @@ public class GPSComputer {
 	// beregn gjennomsnitshastighets mellom hver av gps punktene
 
 	public double[] speeds() {
+		
 		
 		double[] speeds = new double[gpspoints.length - 1];
 		int index = 0;
@@ -163,7 +169,9 @@ public class GPSComputer {
 		
 		
 		System.out.println("==============================================");
+		//printer ut i konsollen. "%-15s" for sette semikolonet et fast sted 15 "tegn" bak. 
 		System.out.printf("%-15s:","Total Time");
+		//så blir verdien for totalTime trekt ut og printet. 
 		System.out.println(GPSUtils.formatTime(this.totalTime()));
 		
 		System.out.printf("%-15s:", "Total distance");
@@ -180,6 +188,7 @@ public class GPSComputer {
 		
 		System.out.printf("%-15s:", "Energy");
 		System.out.println(GPSUtils.formatDouble(this.totalKcal(WEIGHT)) + " kcal");
+		
 		System.out.println("==============================================");
 
 	}
