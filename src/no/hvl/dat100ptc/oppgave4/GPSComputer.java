@@ -160,11 +160,26 @@ public class GPSComputer {
 	public void displayStatistics() {
 		
 		
-		String str = "";
+		
 		
 		System.out.println("==============================================");
+		System.out.printf("%-15s:","Total Time");
+		System.out.println(GPSUtils.formatTime(this.totalTime()));
 		
+		System.out.printf("%-15s:", "Total distance");
+		System.out.println(GPSUtils.formatDouble(this.totalDistance() / 1000) + " km");
 		
+		System.out.printf("%-15s:", "Total elevation");
+		System.out.println(GPSUtils.formatDouble(this.totalElevation()) + "m");
+		
+		System.out.printf("%-15s:", "Max speed");
+		System.out.println(GPSUtils.formatDouble(this.maxSpeed()) + " km/t");
+		
+		System.out.printf("%-15s:", "Average speed");
+		System.out.println(GPSUtils.formatDouble(this.averageSpeed()) + " km/t");
+		
+		System.out.printf("%-15s:", "Energy");
+		System.out.println(GPSUtils.formatDouble(this.totalKcal(WEIGHT)) + " kcal");
 		System.out.println("==============================================");
 
 	}
