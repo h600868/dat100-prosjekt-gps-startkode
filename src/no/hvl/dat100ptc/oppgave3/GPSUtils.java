@@ -126,7 +126,7 @@ public class GPSUtils {
 
 	public static String formatDouble(double d) {
 
-		String str;
+		String str = " ";
 
 		
 		
