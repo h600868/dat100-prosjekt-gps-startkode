@@ -98,7 +98,7 @@ public class GPSComputer {
 		
 	}
 		/*regner ut gjennomsnittshastigheten, der vi bruker total distansen
-		  delt på total tiden. også gange 3,6 for å få meter per sekund*/
+		  delt på total tiden. da får vi farten i m/s, også ganger vi 3,6 for å få km/t*/
 	public double averageSpeed() {
 
 		double average = 0;
