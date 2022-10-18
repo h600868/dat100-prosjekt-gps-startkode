@@ -4,11 +4,13 @@ import no.hvl.dat100ptc.TODO;
 
 public class GPSPoint {
 
+	//faste objektvariabler for tid, bredde/lengde-grad og høyde
 	private int time;
 	private double latitude;
 	private double longitude;
 	private double elevation;
 		
+	//konstruktør som gir verdi til alle objektvariablene
 	public GPSPoint(int time, double latitude, double longitude, double elevation) {
 
 		this.time = time;
@@ -18,7 +20,7 @@ public class GPSPoint {
 
 	}
 
-	//
+	//diverse hent(get) og sett(set) metoder for å kunne kalle frem eller sette verdier
 	public int getTime() {
 		
 		return time;
@@ -67,6 +69,7 @@ public class GPSPoint {
 		
 	}
 	
+	//returnerer en streng representasjon av et gps punkt
 	public String toString() {
 		
 		String str = this.time + " (" + this.latitude + "," + this.longitude + ") " + this.elevation + "\n";
