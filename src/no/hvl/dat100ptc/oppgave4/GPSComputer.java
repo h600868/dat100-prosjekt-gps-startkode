@@ -73,10 +73,11 @@ public class GPSComputer {
 
 	public double[] speeds() {
 		
-		
+		//lager en tabell som kan oppbevare gjennomsnittshastighetene 
 		double[] speeds = new double[gpspoints.length - 1];
 		int index = 0;
 		
+		//bruker løkken for å legge inn hastigheten mellom hvert av punktene inn i sin plass i tabellen speeds.
 		for (int i = 1; i < gpspoints.length; i++) {
 			speeds[index] = GPSUtils.speed(gpspoints[i-1], gpspoints[i]);
 			index++;
@@ -84,7 +85,7 @@ public class GPSComputer {
 		
 		return speeds; 
 	}
-	
+		//blir brukt for å finne maksimale hastigheten målt mellom to punkter. 
 	public double maxSpeed() {
 		
 		double maxspeed = 0;
@@ -96,7 +97,8 @@ public class GPSComputer {
 		return maxspeed;
 		
 	}
-
+		/*regner ut gjennomsnittshastigheten, der vi bruker total distansen
+		  delt på total tiden. også gange 3,6 for å få meter per sekund*/
 	public double averageSpeed() {
 
 		double average = 0;
@@ -127,7 +129,8 @@ public class GPSComputer {
 		// MET: Metabolic equivalent of task angir (kcal x kg-1 x h-1)
 		double met = 0;		
 		double speedmph = speed * MS;
-
+		
+		//sjekker hvilken kategori forbrenningen ligger på innenfor MET. som tar hastigheten og regner ut "arbeid" utført
 		if (speedmph < 10) {
 			met = 4.0;
 		} else if (10 <= speedmph && speedmph < 12) {
@@ -147,7 +150,9 @@ public class GPSComputer {
 		return kcal;
 	
 	}
-
+		
+		//regner ut total kcal forbrenning iløpet av hele turen.  
+		//og bruker kcal metoden ovenfor bare med totaltime og average speed som input i tilegg. 
 	public double totalKcal(double weight) {
 
 		double totalkcal = 0;
